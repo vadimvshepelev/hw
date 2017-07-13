@@ -52,7 +52,37 @@ def hand_rank(hand):
 
 def card_ranks(hand):
     """Возвращает список рангов, отсортированный от большего к меньшему"""
-    return
+    cards = hand.split()
+    assert len(cards) == 7
+    ranks_str = ''
+    for c in cards:
+        ranks_str+=c[0]
+    ranks = sorted(ranks_str)   
+    for r in ranks_str:
+        if r == 'T':
+            ranks.remove(r)
+            ranks.append(r)
+    for r in ranks_str:
+        if r == 'J':
+            ranks.remove(r)
+            ranks.append(r)
+    for r in ranks_str:
+        if r == 'Q':
+            ranks.remove(r)
+            ranks.append(r)
+    for r in ranks_str:
+        if r == 'K':
+            ranks.remove(r)
+            ranks.append(r)		
+    for r in ranks_str:
+        if r == 'A':
+            ranks.remove(r)
+            ranks.append(r)
+    for r in ranks_str:
+        if r == '?':
+            ranks.remove(r)
+            ranks.append(r)    
+    return ranks
 
 
 def flush(hand):
@@ -62,7 +92,7 @@ def flush(hand):
     suit = cards[0][1]
     for c in cards:
         if c[1]!=suit:
-            return False	
+            return False    
     return True
 
 
@@ -120,7 +150,8 @@ if __name__ == '__main__':
     
     print flush('6C 6C 6C 6C 6C 6H 6C')
     #print flush('6C 6C 6C 6C 6C 6C') -- AssertionError
-	
+    print card_ranks('AC 9C QC KC 6C AC KC')
+
     test_best_hand()
     test_best_wild_hand()
-	
+    
